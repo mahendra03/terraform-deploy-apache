@@ -3,8 +3,8 @@ resource "aws_vpc" "main" {
  }
  
 variable "subnetcidr" {  
-  "190.160.0.0/20" = "ap-south-1a"
-  "190.160.1.0/20" = "ap-south-1b"
+  ap-south-1a="190.160.0.0/20" 
+  ap-south-1b="190.160.1.0/20"
 }
 
 resource "aws_subnet" "name" {
