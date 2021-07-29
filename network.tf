@@ -2,7 +2,7 @@ resource "aws_vpc" "main" {
    cidr_block="190.160.0.0/16"
  }
  
-variable "subnetcidr" = {  
+variable "subnetcidr" {  
   "190.160.0.0/20" = "ap-south-1a"
   "190.160.1.0/20" = "ap-south-1b"
 }
