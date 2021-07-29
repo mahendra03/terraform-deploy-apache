@@ -3,7 +3,7 @@ resource "aws_lb" "test" {
   internal           = false
   load_balancer_type = "application"
   vpc_security_group_ids=["${aws_security_group.webSG.id}"]
-  subnets            = "190.160.1.0/24"
+  subnet_id            = "190.160.1.0/24"
 
   enable_deletion_protection = true
 
