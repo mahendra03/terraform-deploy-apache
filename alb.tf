@@ -2,8 +2,9 @@ resource "aws_lb" "test" {
   name               = "test-lb-tf"
   internal           = false
   load_balancer_type = "application"
-  vpc_security_group_ids=["${aws_security_group.webSG.id}"]
-  subnet_id            = "190.160.1.0/24"
+  security_groups    = aws_security_group.webSG.id
+  subnets            = aws_subnet.main.id
+  
 
   enable_deletion_protection = true
 
