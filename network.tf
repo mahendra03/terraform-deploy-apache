@@ -8,9 +8,7 @@ variable "subnetcidr" {
 }
 
 resource "aws_subnet" "name" {
-  for_each = var.subnetcidr
   vpc_id = aws_vpc.name.id
-  availability_zone = each.value
-  cidr_block = each.key
+  cidr_block = var.subnetcidr
 }
    
