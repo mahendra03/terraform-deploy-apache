@@ -4,8 +4,8 @@ resource "aws_vpc" "main" {
 
 variable "sub'{
   default={
-    a="190.160.1.0/24",
-    b="190.16021.0/24"
+    app-one="190.160.1.0/24",
+    app-two="190.16021.0/24"
     }
     }
  
