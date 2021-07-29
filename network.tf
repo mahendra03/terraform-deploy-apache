@@ -7,6 +7,7 @@ variable "sub'{
     a="190.160.1.0/24",
     b="190.16021.0/24"
     }
+    }
  
  resource "aws_subnet" "main" {
      vpc_id=aws_vpc.main.id
