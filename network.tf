@@ -2,10 +2,8 @@ resource "aws_vpc" "main" {
    cidr_block="190.160.0.0/16"
  }
  
-resource "aws_subnet" "main" {
-  count             = var.subnet_count
-  vpc_id            = aws_vpc.main.id
-  cidr_block        = data.template_file.public_cidrsubnet[count.index].rendered
-  availability_zone = slice(data.aws_availability_zones.available.names, 0, var.subnet_count)[count.index]
+resource "aws_subnet" "main"{
+   vpc_id=aws_vpc.main.id
+   cidr_block=["190.160.1.0/20","190.160.2.0/20"]
 }
    
