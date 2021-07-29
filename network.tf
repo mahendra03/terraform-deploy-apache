@@ -5,7 +5,7 @@ resource "aws_vpc" "main" {
 
 resource "aws_subnet" "main" {
   count=2
-  vpc_id = aws_vpc.name.id
+  vpc_id = aws_vpc.main.id
   cidr_block = cidrsubnet(var.vpc_cidr,8,count.index)
 }
    
