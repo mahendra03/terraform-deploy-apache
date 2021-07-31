@@ -1,4 +1,3 @@
-
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -20,9 +19,6 @@ resource "aws_launch_configuration" "as_conf" {
   image_id      = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
 
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 resource "aws_autoscaling_group" "bar" {
@@ -31,7 +27,4 @@ resource "aws_autoscaling_group" "bar" {
   min_size             = 1
   max_size             = 1
 
-  lifecycle {
-    create_before_destroy = true
-  }
 }
