@@ -9,6 +9,7 @@ resource "aws_internet_gateway" "gw" {
 
 resource "aws_elb" "bar" {
   name               = "terraform-elb"
+  load_balancer_type = "application"
   availability_zones = ["ap-south-1a", "ap-south-1b"]
 
   access_logs {
