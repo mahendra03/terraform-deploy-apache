@@ -8,6 +8,7 @@ variable "sub"{
    }
 
 resource "aws_subnet" "main" {
+    vpc_id=aws_vpc.main.id
     for_each=var.sub
     cidr_block=each.value
 }
