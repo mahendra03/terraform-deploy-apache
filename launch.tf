@@ -3,8 +3,7 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210430"]
-   
+    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
   }
 
   filter {
@@ -16,15 +15,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_launch_configuration" "as_conf" {
+  name          = "web_config"
   image_id      = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-
-}
-
-resource "aws_autoscaling_group" "bar" {
-  name                 = "terraform-asg-example"
-  launch_configuration = aws_launch_configuration.as_conf.name
-  min_size             = 1
-  max_size             = 1
-
 }
