@@ -11,7 +11,7 @@ resource "aws_autoscaling_group" "bar" {
   min_size           = 1
 
   launch_template {
-    id      = "apache-v2"
+    id      = "lt-0915ecac7e359df20"
     version = 1
   }
 }
