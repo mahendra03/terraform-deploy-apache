@@ -13,6 +13,6 @@ resource "aws_autoscaling_group" "web" {
   
   launch_configuration = aws_launch_configuration.as_conf.name
 
-  vpc_zone_identifier  = [aws_subnet.main.id, aws_subnet.main1.id]
+  vpc_zone_identifier  = [aws_subnet.main.id]
 
 }
