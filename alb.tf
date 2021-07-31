@@ -6,14 +6,11 @@ resource "aws_internet_gateway" "gw" {
   }
 }
 
-resource "aws_lb" "test" {
-  name               = "test-lb-tf"
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = ["sg-0a5ccbe0d74bc609c"]
-  subnets            = ["subnet-00bce002b4aa75e43", "subnet-01cb9e926e6c799f3"]
-  
 
+resource "aws_elb" "bar" {
+  name               = "terraform-elb"
+  availability_zones = ["ap-south-1a", "ap-south-1b"]
+  
   enable_deletion_protection = true
 
   access_logs {
@@ -22,7 +19,29 @@ resource "aws_lb" "test" {
     enabled = true
   }
 
+  listener {
+    instance_port     = 8000
+    instance_protocol = "http"
+    lb_port           = 80
+    lb_protocol       = "http"
+  }
+
+
+  health_check {
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+    timeout             = 3
+    target              = "HTTP:8000/"
+    interval            = 30
+  }
+
+  instances                   = ["i-0c107582381e57b4e"]
+  cross_zone_load_balancing   = true
+  idle_timeout                = 400
+  connection_draining         = true
+  connection_draining_timeout = 400
+
   tags = {
-    Environment = "dev"
+    Name = "foobar-terraform-elb"
   }
 }
