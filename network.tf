@@ -4,7 +4,7 @@ resource "aws_vpc" "main" {
 
 variable "subnet_cidr"{
    type=list
-   default=["190.160.1.0/20","190.160.2.0/20"]
+   default=["190.160.1.0/24","190.160.2.0/24"]
    }
 
 variable "azs"{
