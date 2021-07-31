@@ -7,7 +7,7 @@ variable "subnet_cidr"{
    default=["190.160.1.0/20","190.160.2.0/20"]
    }
 
-varibale "azs"{
+variable "azs"{
    type=list
    default=["ap-south-1a","ap-south-1b"]
 }
