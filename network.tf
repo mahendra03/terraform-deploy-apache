@@ -3,7 +3,7 @@ resource "aws_vpc" "main" {
  }
 
 variable "sub"{
-   type="list"
+   type=list
    default=["190.160.1.0/20","190.160.2.0/20"]
    }
 
