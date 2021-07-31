@@ -12,7 +12,7 @@ resource "aws_elb" "bar" {
   availability_zones = ["ap-south-1a", "ap-south-1b"]
 
   access_logs {
-    bucket  = "mahendrajson"
+    bucket  = "se-elb"
   }
 
   listener {
