@@ -15,6 +15,6 @@ variable "azs"{
 resource "aws_subnet" "main" {
     count="${length(var.azs)}"
     vpc_id=aws_vpc.main.id
-    cidr_block="{element(var.subnet_cidr,count.index)}"
+    cidr_block="${element(var.subnet_cidr,count.index)}"
 }
    
