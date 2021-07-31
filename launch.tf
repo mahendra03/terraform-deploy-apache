@@ -14,8 +14,8 @@ resource "aws_autoscaling_group" "web" {
   launch_configuration = aws_launch_configuration.as_conf.name
 
   vpc_zone_identifier  = [
-    aws_subnet.public_us_east_1a.id,
-    aws_subnet.public_us_east_1b.id
+    aws_subnet.public_ap_south_1a.id,
+    aws_subnet.public_ap_south_1b.id
   ]
 
 }
