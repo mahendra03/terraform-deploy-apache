@@ -4,10 +4,18 @@ resource "aws_launch_configuration" "as_conf" {
   instance_type = "t2.micro"
 }
 
-resource "aws_autoscaling_group" "bar" {
-  name                 = "terraform-asg-example"
-  launch_configuration = aws_launch_configuration.as_conf.name
+resource "aws_autoscaling_group" "web" {
+  name = "${aws_launch_configuration.as_conf.name}-asg"
+
   min_size             = 1
+  desired_capacity     = 1
   max_size             = 1
+  
+  launch_configuration = aws_launch_configuration.as_conf.name
+
+  vpc_zone_identifier  = [
+    aws_subnet.public_us_east_1a.id,
+    aws_subnet.public_us_east_1b.id
+  ]
 
 }
