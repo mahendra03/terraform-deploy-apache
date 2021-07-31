@@ -9,7 +9,7 @@ variable "sub"{
 
 resource "aws_subnet" "main" {
     vpc_id=aws_vpc.main.id
-    for_each=var.sub
+    for_each=toset(var.sub)
     cidr_block=aws_subnet.main[each.key]
 }
    
