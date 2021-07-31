@@ -10,13 +10,9 @@ resource "aws_internet_gateway" "gw" {
 resource "aws_elb" "bar" {
   name               = "terraform-elb"
   availability_zones = ["ap-south-1a", "ap-south-1b"]
-  
-  enable_deletion_protection = true
 
   access_logs {
     bucket  = "mahendrajson"
-    prefix  = "test-lb"
-    enabled = true
   }
 
   listener {
