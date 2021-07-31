@@ -41,3 +41,22 @@ resource "aws_elb" "bar" {
     Name = "foobar-terraform-elb"
   }
 }
+
+resource "aws_s3_bucket" "elb_logs" {
+  bucket = "se-elb"
+  acl    = "private"
+
+  policy = <<POLICY
+{
+   "Id": "Policy",
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        }
+    ]
+}
+  POLICY
+}
