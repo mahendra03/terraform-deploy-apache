@@ -2,14 +2,19 @@ resource "aws_vpc" "main" {
    cidr_block="190.160.0.0/16"
  }
 
-variable "sub"{
+variable "subnet_cidr"{
    type=list
    default=["190.160.1.0/20","190.160.2.0/20"]
    }
 
+varibale "azs"{
+   type=list
+   default=["ap-south-1a","ap-south-1b"]
+}
+
 resource "aws_subnet" "main" {
+    count="${length(var.azs)}"
     vpc_id=aws_vpc.main.id
-    for_each=toset(var.sub)
-    cidr_block=aws_subnet.main[each.key]
+    cidr_block="{element(var.subnet_cidr,count.index)}"
 }
    
